@@ -1,13 +1,18 @@
 import { setCompToggle, setToogle } from '@/redux/categories/categoriesSlice';
-import { useGetCategoryQuery } from '@/redux/categories/categoryApi';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { FaAngleDown, FaXmark } from 'react-icons/fa6';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 const NavBar = () => {
   const { toggle, compToggle } = useSelector((action) => action.category);
   const dispatch = useDispatch();
-  const { data: category } = useGetCategoryQuery();
+  const [category, setCategories] = useState([]);
+  useEffect(() => {
+    fetch('https://pc-server-ktm1cil18-muradwahid.vercel.app/categories')
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  });
   return (
     <nav className="bg-slate-800 relative w-full">
       <div className="mainContainer mx-auto robotoSlabFont flex items-center justify-between">

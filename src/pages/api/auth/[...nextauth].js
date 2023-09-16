@@ -8,7 +8,7 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: 'https://pc-builder-dal02ez2c-muradwahid.vercel.app/login',
+    signIn: 'https://pc-builder-muradwahid.vercel.app//login',
   },
 };
 export default NextAuth(authOptions);

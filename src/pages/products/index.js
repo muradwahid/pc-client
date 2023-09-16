@@ -1,26 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import RootLayout from '@/components/Layout/RootLayout';
-import { useGetProductsQuery } from '@/redux/products/productsApi';
 import Link from 'next/link';
-import { Puff } from 'react-loader-spinner';
-const Products = () => {
-  const { data: products, isLoading } = useGetProductsQuery();
-  if (isLoading) {
-    return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <Puff
-          height="80"
-          width="80"
-          radius={1}
-          color="#1E293B"
-          ariaLabel="puff-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      </div>
-    );
-  }
+export async function getStaticProps() {
+  const productRes = await fetch(
+    'https://pc-server-ktm1cil18-muradwahid.vercel.app/products'
+  );
+  const products = await productRes.json();
+  return {
+    props: {
+      products,
+    },
+  };
+}
+const Products = ({ products }) => {
   return (
     <div className="mainContainer mx-auto">
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-5">
