@@ -1,11 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import RootLayout from '@/components/Layout/RootLayout';
-import Link from 'next/link';
+import { addToBuilder } from '@/redux/pcBuilder/pcBuilderSlice';
+import { useRouter } from 'next/router';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const Components = ({ component }) => {
-  const data=component?.data
-
+const PcBuildComp = ({ component }) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+  const data = component?.data;
+  const handleProductAdd = (item) => {
+    dispatch(addToBuilder(item));
+    router.push('/pcbuilder');
+  }
   return (
     <div className="mainContainer mx-auto my-8">
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-5">
@@ -23,12 +30,13 @@ const Components = ({ component }) => {
                 Price: <span>{item?.Price}Tk</span>
               </p>
             </div>
-            <Link
+            <button
+              onClick={()=>handleProductAdd(item)}
               className="text-center absolute w-full bg-gray-300 block font-semibold py-1 bottom-0"
-              href={`/products/${item._id}`}
+              
             >
-              View Details
-            </Link>
+              Add
+            </button>
           </div>
         ))}
       </div>
@@ -36,16 +44,15 @@ const Components = ({ component }) => {
   );
 };
 
-export default Components;
-
-Components.getLayout = function getLayout(page) {
+export default PcBuildComp;
+PcBuildComp.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 export const getStaticPaths = async () => {
   const res = await fetch('http://localhost:5000/products');
   const data = await res.json();
   const paths = data?.data?.map((singleProduct) => ({
-    params: { componentsId: String(singleProduct?.Category) },
+    params: { pcbuildId: String(singleProduct?.Category) },
   }));
   return {
     paths,
@@ -54,7 +61,9 @@ export const getStaticPaths = async () => {
 };
 export async function getStaticProps(context) {
   const { params } = context;
-  const res = await fetch(`http://localhost:5000/components/${params.componentsId}`);
+  const res = await fetch(
+    `http://localhost:5000/components/${params.pcbuildId}`
+  );
   const data = await res.json();
   return {
     props: {
