@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import RootLayout from '@/components/Layout/RootLayout';
 import { removeToPcBuilder } from '@/redux/pcBuilder/pcBuilderSlice';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 
 const PcBuild = ({ categories }) => {
-    const { products, totalPrice } = useSelector((state) => state.pcBuilder);
+  const { products, totalPrice } = useSelector((state) => state.pcBuilder);
   const dispatch = useDispatch();
   return (
     <div className="mainContainer mx-auto my-6">
@@ -22,7 +21,9 @@ const PcBuild = ({ categories }) => {
           </div>
           <div className="grid grid-cols-1 gap-5 pb-5 mt-5">
             {categories?.data.map((category) => {
-              const isExting = products.find((product) => product?.Category === category?.categoris);
+              const isExting = products.find(
+                (product) => product?.Category === category?.categoris
+              );
               return isExting ? (
                 <div
                   key={category?._id}
@@ -30,10 +31,9 @@ const PcBuild = ({ categories }) => {
                 >
                   <div className="">
                     <div className="flex justify-center">
-                      <Image
+                      <img
                         src={category?.image}
-                        width={50}
-                        height={50}
+                        className="h-[50px] w-[50px]"
                         alt=""
                       />
                     </div>

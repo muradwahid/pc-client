@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import RootLayout from '@/components/Layout/RootLayout';
 import Link from 'next/link';
-import React from 'react';
-
 const Components = ({ component }) => {
   const data=component?.data
 

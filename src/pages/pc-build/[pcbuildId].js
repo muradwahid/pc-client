@@ -2,7 +2,6 @@
 import RootLayout from '@/components/Layout/RootLayout';
 import { addToBuilder } from '@/redux/pcBuilder/pcBuilderSlice';
 import { useRouter } from 'next/router';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 
 const PcBuildComp = ({ component }) => {
@@ -11,7 +10,7 @@ const PcBuildComp = ({ component }) => {
   const data = component?.data;
   const handleProductAdd = (item) => {
     dispatch(addToBuilder(item));
-    router.push('/pcbuilder');
+    router.push('/pc-build');
   }
   return (
     <div className="mainContainer mx-auto my-8">
