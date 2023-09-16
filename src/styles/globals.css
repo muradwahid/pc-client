@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+.robotoFont{
+  font-family: 'Roboto', sans-serif;
+}
+.robotoSlabFont{
+  font-family: 'Roboto Slab', serif;
+}
+.dropIcon {
+  transition: all 0.2s;
+}
+
+.componetDrop:hover>.dropIcon{
+  rotate:180deg;
+}
+.componetDrop:hover>.dropdownMenu{
+  -webkit-transform: scaleY(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+}
+.categoryCard{
+  border-radius: 5px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.24);
+}.categoryCard:hover {
+  box-shadow: 0 15px 90px -10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* responsive */
+/* dubble extra large */
+@media only screen and (min-width: 1400px) {
+  .mainContainer {
+    width: 1320px !important;
+  }
+}
+
+/* extara large */
+@media only screen and (min-width: 1200px) and (max-width:1400px) {
+  .mainContainer {
+    width: 1140px !important;
+  }
+
+}
+
+/* large device */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .mainContainer {
+    width: 960px !important;
+  }
+}
+
+/* medium device */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .mainContainer {
+    width: 720px !important;
+  }
+}
+
+/* small device */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .mainContainer {
+    width: 540px !important;
+  }
+}
+
+/* extra small */
+@media only screen and (max-width: 576px) {
+  .mainContainer {
+    width: 90% !important;
+  }
+}
