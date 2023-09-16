@@ -97,7 +97,9 @@ PcBuild.getLayout = function getLayout(page) {
 };
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:5000/categories');
+  const res = await fetch(
+    'https://pc-server-ktm1cil18-muradwahid.vercel.app/categories'
+  );
   const categories = await res.json();
   return {
     props: {

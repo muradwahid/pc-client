@@ -8,7 +8,7 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: 'http://localhost:3000/login',
+    signIn: 'https://pc-builder-dal02ez2c-muradwahid.vercel.app/login',
   },
 };
 export default NextAuth(authOptions);

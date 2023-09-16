@@ -6,9 +6,13 @@ import { setCategories } from '@/redux/categories/categoriesSlice';
 import { setProduct } from '@/redux/products/productSlice';
 import { useDispatch } from 'react-redux';
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:5000/categories');
+  const res = await fetch(
+    'https://pc-server-ktm1cil18-muradwahid.vercel.app/categories'
+  );
   const data = await res.json();
-  const productRes = await fetch('http://localhost:5000/products');
+  const productRes = await fetch(
+    'https://pc-server-ktm1cil18-muradwahid.vercel.app/products'
+  );
   const products = await productRes.json();
   return {
     props: {
@@ -20,8 +24,8 @@ export async function getStaticProps() {
 const Home = ({ data, products }) => {
   const dispatch = useDispatch();
   dispatch(setCategories(data));
-  dispatch(setProduct(products))
-  console.log(products)
+  dispatch(setProduct(products));
+
   return (
     <div>
       <HeroSection />

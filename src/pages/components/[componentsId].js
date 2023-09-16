@@ -2,7 +2,7 @@
 import RootLayout from '@/components/Layout/RootLayout';
 import Link from 'next/link';
 const Components = ({ component }) => {
-  const data=component?.data
+  const data = component?.data;
 
   return (
     <div className="mainContainer mx-auto my-8">
@@ -40,7 +40,9 @@ Components.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 export const getStaticPaths = async () => {
-  const res = await fetch('http://localhost:5000/products');
+  const res = await fetch(
+    'https://pc-server-ktm1cil18-muradwahid.vercel.app/products'
+  );
   const data = await res.json();
   const paths = data?.data?.map((singleProduct) => ({
     params: { componentsId: String(singleProduct?.Category) },
@@ -52,7 +54,9 @@ export const getStaticPaths = async () => {
 };
 export async function getStaticProps(context) {
   const { params } = context;
-  const res = await fetch(`http://localhost:5000/components/${params.componentsId}`);
+  const res = await fetch(
+    `https://pc-server-ktm1cil18-muradwahid.vercel.app/components/${params.componentsId}`
+  );
   const data = await res.json();
   return {
     props: {

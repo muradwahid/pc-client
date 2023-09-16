@@ -5,13 +5,13 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
 const PcBuildComp = ({ component }) => {
-    const router = useRouter();
-    const dispatch = useDispatch();
+  const router = useRouter();
+  const dispatch = useDispatch();
   const data = component?.data;
   const handleProductAdd = (item) => {
     dispatch(addToBuilder(item));
     router.push('/pc-build');
-  }
+  };
   return (
     <div className="mainContainer mx-auto my-8">
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-5">
@@ -30,9 +30,8 @@ const PcBuildComp = ({ component }) => {
               </p>
             </div>
             <button
-              onClick={()=>handleProductAdd(item)}
+              onClick={() => handleProductAdd(item)}
               className="text-center absolute w-full bg-gray-300 block font-semibold py-1 bottom-0"
-              
             >
               Add
             </button>
@@ -48,7 +47,9 @@ PcBuildComp.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 export const getStaticPaths = async () => {
-  const res = await fetch('http://localhost:5000/products');
+  const res = await fetch(
+    'https://pc-server-ktm1cil18-muradwahid.vercel.app/products'
+  );
   const data = await res.json();
   const paths = data?.data?.map((singleProduct) => ({
     params: { pcbuildId: String(singleProduct?.Category) },
@@ -61,7 +62,7 @@ export const getStaticPaths = async () => {
 export async function getStaticProps(context) {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/components/${params.pcbuildId}`
+    `https://pc-server-ktm1cil18-muradwahid.vercel.app/components/${params.pcbuildId}`
   );
   const data = await res.json();
   return {
