@@ -20,6 +20,9 @@ const HomePcComponents = ({products}) => {
               <p>
                 Model: <span>{item?.Key_Features.Model}</span>
               </p>
+              <p>
+                Price: <span>{item?.Price}Tk</span>
+              </p>
             </div>
             <Link
               className="text-center absolute w-full bg-gray-300 block font-semibold py-1 bottom-0"

@@ -39,7 +39,7 @@ const NavBar = () => {
                   <Link
                     key={com._id}
                     className="robotoFont text-[16px] w-full hover:bg-orange-400 py-1 pl-5 block"
-                    href={`/products/${com?.categoris}`}
+                    href={`/components/${com?.categoris}`}
                   >
                     {com.name}
                   </Link>
@@ -109,7 +109,7 @@ const NavBar = () => {
                       >
                         <Link
                           className="robotoFont text-[16px] w-full hover:bg-orange-400 py-1 pl-5 block"
-                          href={`/products/${com?.categoris}`}
+                          href={`/components/${com?.categoris}`}
                         >
                           {com.name}
                         </Link>

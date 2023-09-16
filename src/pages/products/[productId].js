@@ -1,11 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import RootLayout from '@/components/Layout/RootLayout';
 
 const SingleProduct = ({ product }) => {
-  console.log(product);
   const data = product.data[0];
   return (
     <div className="mainContainer mx-auto">
-      <div className="flex gap-10 items-center">
+      <div className="flex gap-10 items-center lg:flex-row flex-col">
         <div>
           <img src={data?.Image} alt="" />
         </div>
@@ -39,17 +39,31 @@ const SingleProduct = ({ product }) => {
               Key Features:
             </p>
             <div>
-              <p className='mb-2'>
-                <span className='font-medium'>Model:</span>{" "}
+              <p className="mb-2">
+                <span className="font-medium">Model:</span>{' '}
                 {data?.Key_Features.Model}
               </p>
-              <p className='mb-2'>
-                <span className='font-medium'>Model:</span>{" "}
-                {data?.Key_Features.Model}
+              <p className="mb-2">
+                <span className="font-medium">Specification:</span>{' '}
+                {data?.Key_Features.Specification}
+              </p>
+              <p className="mb-2">
+                <span className="font-medium">Resolution :</span>{' '}
+                {data?.Key_Features.Resolution}
+              </p>
+              <p className="mb-2">
+                <span className="font-medium">Voltage :</span>{' '}
+                {data?.Key_Features.Voltage}
               </p>
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-6">
+        <p>
+          <strong>Description:</strong>
+          {data?.Description}
+        </p>
       </div>
     </div>
   );

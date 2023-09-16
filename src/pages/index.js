@@ -21,6 +21,7 @@ const Home = ({ data, products }) => {
   const dispatch = useDispatch();
   dispatch(setCategories(data));
   dispatch(setProduct(products))
+  console.log(products)
   return (
     <div>
       <HeroSection />

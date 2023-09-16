@@ -12,7 +12,7 @@ const HomeCategory = ({ category }) => {
       <div className="mt-5 flex flex-wrap gap-4">
         {category?.data?.map((item) => (
           <div key={item._id} className="w-[150px] categoryCard py-3 px-3">
-            <Link href={`/products/${item?.categoris}`}>
+            <Link href={`/components/${item?.categoris}`}>
               <img src={item?.image} alt="" />
               <p className="text-center font-semibold uppercase">{item?.name}</p>
             </Link>
